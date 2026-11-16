@@ -1,0 +1,13 @@
+{
+  "name": "patio-escolar",
+  "version": "0.1.0",
+  "description": "Rede social escolar com grupos, mensagens, tags e quadro de avisos.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node src/app.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED",
+  "private": true
+}
