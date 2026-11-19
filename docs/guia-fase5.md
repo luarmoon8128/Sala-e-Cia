@@ -88,12 +88,12 @@ Ordem dos eventos: cadastro → valida campos → confere se o e-mail/telefone j
 
 | Norma | Como está |
 |---|---|
-| Senha com hash | bcrypt (custo 12), nunca em texto. Testado no banco. |
+| Senha com hash | Argon2id (19 MiB, 2 passes), nunca em texto. Testado no banco. |
 | Código de recuperação | Aleatório (256 bits), validade de 30 min, uso único, guardado só como SHA-256. Novo pedido cancela o anterior. |
-| Mensagens genéricas | "E-mail ou senha inválidos" (inclusive com e-mail inexistente e com tempo de bcrypt igualado); "esqueci a senha" responde sempre 200 e envia depois da resposta. |
+| Mensagens genéricas | "E-mail ou senha inválidos" (inclusive com e-mail inexistente e com tempo de hash igualado); "esqueci a senha" responde sempre 200 e envia depois da resposta. |
 | Validação no back-end | `utils/validacao.js` + services; o formulário é só conveniência. |
 | Segredos no `.env` | `JWT_SECRET` (mín. 32 caracteres) e demais chaves só no `.env`, que está no `.gitignore`; o servidor se recusa a subir sem segredo forte. |
-| Senha mínima de 8 | Validado no servidor (máx. 72 bytes, limite do bcrypt). |
+| Senha mínima de 8 | Validado no servidor (máx. 128 caracteres). |
 | HTTPS em produção | Em `NODE_ENV=production` redireciona para HTTPS, exige `APP_URL` https e envia HSTS. |
 | Limite de tentativas | 5 erros de login por IP+conta a cada 15 min (429); trava extra por IP no cadastro e na recuperação. |
 | Consultas parametrizadas | Todo SQL usa `$1…`; testado com tentativas de SQL Injection. |
