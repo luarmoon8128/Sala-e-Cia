@@ -10,11 +10,13 @@
     "db:init": "node scripts/init-db.js",
     "admin:criar": "node scripts/criar-admin.js"
   },
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "argon2": "^0.45.2",
     "dotenv": "^16.6.1",
     "express": "^4.22.3",
     "express-rate-limit": "^7.5.1",
